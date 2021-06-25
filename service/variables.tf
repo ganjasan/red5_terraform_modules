@@ -33,3 +33,26 @@ variable "container_port" {
 variable "listener_arn" {
   description = "Listener ARN"
 }
+
+variable "listener_path_pattern" {
+  description = "Pattern for listener redirection"
+}
+
+variable "health_path" {
+  description = "Path to check health"
+}
+
+variable "capacity_provider_base" {
+  default     = null
+  description = "Number of tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined."
+}
+
+variable "capacity_provider_name" {
+  description = "Short name of the capacity provider."
+}
+
+variable "capacity_provider_weight" {
+  description = "Relative percentage of the total number of launched tasks that should use the specified capacity provider"
+}
+
+
