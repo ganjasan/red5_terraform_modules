@@ -123,3 +123,36 @@ resource "aws_route_table_association" "private_subnet_b_association" {
 }
 
 
+#Public NAT gateway
+
+resource "aws_eip" "nat_eip" {
+  tags = {
+    Name  = "${var.project_name}.nat_eip"
+    App   = var.project_name
+    Stage = var.stage
+  }
+}
+
+resource "aws_nat_gateway" "public_nat" {
+  allocation_id = aws_eip.nat_eip.id
+  subnet_id     = aws_subnet.public_subnet_a.id
+
+  tags = {
+    Name  = "${var.project_name}.nat"
+    App   = var.project_name
+    Stage = var.stage
+  }
+
+  depends_on = [aws_internet_gateway.igw]
+}
+
+resource "aws_route" "to_nat" {
+  route_table_id         = aws_route_table.private_route_table.id
+  destination_cidr_block = "0.0.0.0/0"
+  nat_gateway_id         = aws_nat_gateway.public_nat.id
+  depends_on = [
+    aws_route_table.private_route_table
+  ]
+}
+
+
