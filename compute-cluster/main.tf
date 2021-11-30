@@ -158,7 +158,7 @@ resource "aws_lb_listener" "lb_listener_443" {
 
 #Capacity provider
 resource "aws_ecs_capacity_provider" "ec2_cp" {
-  name = "${var.project_name}_ec2_cp"
+  name = "${var.project_name}_ec2_cp_${var.stage}"
 
   auto_scaling_group_provider {
     auto_scaling_group_arn         = aws_autoscaling_group.asg.arn
@@ -175,7 +175,7 @@ resource "aws_ecs_capacity_provider" "ec2_cp" {
 
 #ECS Cluster
 resource "aws_ecs_cluster" "ecs_cluster" {
-  name               = "${var.project_name}_cluster"
+  name               = "${var.project_name}_cluster_${var.stage}"
   capacity_providers = [aws_ecs_capacity_provider.ec2_cp.name]
 }
 

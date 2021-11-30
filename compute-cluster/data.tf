@@ -32,6 +32,6 @@ data "template_file" "user_data" {
   template = file("${path.module}/user_data.sh")
 
   vars = {
-    ecs_cluster_name = "${var.project_name}_cluster"
+    ecs_cluster_name = "${var.project_name}_cluster_${var.stage}"
   }
 }

@@ -79,8 +79,9 @@ resource "aws_route_table_association" "public_subnet_b_association" {
 
 #Private Subnets
 resource "aws_subnet" "private_subnet_a" {
-  vpc_id     = aws_vpc.vpc.id
-  cidr_block = var.private_subnet_cidr_a
+  vpc_id            = aws_vpc.vpc.id
+  cidr_block        = var.private_subnet_cidr_a
+  availability_zone = var.availability_zone_a
 
   tags = {
     Name  = "${var.project_name}_private_subnet_a"
@@ -90,8 +91,9 @@ resource "aws_subnet" "private_subnet_a" {
 }
 
 resource "aws_subnet" "private_subnet_b" {
-  vpc_id     = aws_vpc.vpc.id
-  cidr_block = var.private_subnet_cidr_b
+  vpc_id            = aws_vpc.vpc.id
+  cidr_block        = var.private_subnet_cidr_b
+  availability_zone = var.availability_zone_b
 
   tags = {
     Name  = "${var.project_name}_private_subnet_b"
