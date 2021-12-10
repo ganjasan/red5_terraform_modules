@@ -1,7 +1,7 @@
 output "id" {
-    value.aws_s3.this.id
+    value = aws_s3_bucket.this.id
 }
 
 output "arn" {
-    value.aws_s3.this.arn
+    value = aws_s3_bucket.this.arn
 }
