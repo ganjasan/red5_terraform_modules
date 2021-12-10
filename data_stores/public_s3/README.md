@@ -1,0 +1,1 @@
+# Public S3 bucket for static resources
