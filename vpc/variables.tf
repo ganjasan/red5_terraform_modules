@@ -8,6 +8,10 @@ variable "name" {
   type        = string
 }
 
+variable "cidr_16" {
+  description = "First two CIDR blocks. (example 172.0) "
+}
+
 variable "app_name" {
   description = "Name of app project"
   type        = string
