@@ -1,15 +1,10 @@
-variable "region" {
+variable "aws_region" {
   description = "AWS region"
   type        = string
 }
 
 variable "name" {
   description = "VPC name"
-  type        = string
-}
-
-variable "cidr" {
-  description = "VPC CIDR"
   type        = string
 }
 
